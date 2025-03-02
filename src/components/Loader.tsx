@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
 
 interface LoaderProps {
   className?: string;
@@ -17,14 +18,22 @@ const Loader = ({ className, size = 'md', message }: LoaderProps) => {
   
   return (
     <div className={cn("flex flex-col items-center justify-center", className)}>
-      <div 
+      <motion.div 
         className={cn(
-          "border-primary/30 border-t-primary rounded-full animate-spin", 
+          "border-primary/30 border-t-primary rounded-full", 
           sizeClasses[size]
-        )} 
+        )}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
       />
       {message && (
-        <p className="mt-4 text-muted-foreground animate-pulse">{message}</p>
+        <motion.p 
+          className="mt-4 text-muted-foreground text-gradient font-medium"
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {message}
+        </motion.p>
       )}
     </div>
   );

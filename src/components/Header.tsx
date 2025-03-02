@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowDownToLine, Github } from 'lucide-react';
+import { ArrowDownToLine, Github, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Header = () => {
@@ -13,11 +13,11 @@ const Header = () => {
     >
       <div className="flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center mb-4 sm:mb-0">
-          <div className="mr-3 bg-primary/10 p-2 rounded-xl">
-            <ArrowDownToLine className="w-6 h-6 text-primary" />
+          <div className="mr-3 bg-gradient-to-br from-primary to-blue-600 p-3 rounded-xl shadow-md">
+            <ArrowDownToLine className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-semibold">Meme Fetcher Pro</h1>
+            <h1 className="text-xl font-bold text-gradient">Meme Fetcher Pro</h1>
             <p className="text-sm text-muted-foreground">Top memes from r/memes</p>
           </div>
         </div>
@@ -27,7 +27,7 @@ const Header = () => {
             href="https://github.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="glass-button px-4 py-2 rounded-xl text-sm font-medium hover:text-primary flex items-center"
+            className="glass-button px-4 py-2 rounded-xl text-sm font-medium hover:text-primary flex items-center transition-all hover:shadow-md"
           >
             <Github className="w-4 h-4 mr-2" />
             Source Code
@@ -35,8 +35,9 @@ const Header = () => {
           
           <button 
             onClick={() => window.location.reload()}
-            className="bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 rounded-xl text-sm font-medium transition-colors"
+            className="bg-gradient-to-r from-primary to-blue-600 text-white hover:opacity-90 px-5 py-2 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center"
           >
+            <RefreshCw className="w-4 h-4 mr-2" />
             Refresh Memes
           </button>
         </div>

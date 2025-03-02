@@ -56,9 +56,29 @@ const Index = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold mb-2">Top Memes of the Month</h2>
-              <p className="text-muted-foreground">The most upvoted content from r/memes this month</p>
+            <div className="mb-12 text-center">
+              <motion.h2 
+                className="text-4xl font-bold mb-3 text-gradient inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+              >
+                Top Memes of the Month
+              </motion.h2>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="w-24 h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto rounded-full mb-4"
+              />
+              <motion.p 
+                className="text-muted-foreground text-lg max-w-2xl mx-auto"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                The most upvoted content from r/memes this month
+              </motion.p>
             </div>
             
             <MemeGrid 
@@ -70,8 +90,12 @@ const Index = () => {
         </AnimatePresence>
       </main>
       
-      <footer className="mt-16 mb-8 text-center text-sm text-muted-foreground">
-        <p>Data sourced from Reddit's r/memes subreddit • Not affiliated with Reddit Inc.</p>
+      <footer className="mt-20 mb-8 text-center">
+        <div className="glass-card py-5 px-6 inline-block rounded-full">
+          <p className="text-sm text-muted-foreground">
+            Data sourced from Reddit's r/memes subreddit • Not affiliated with Reddit Inc.
+          </p>
+        </div>
       </footer>
     </div>
   );
