@@ -1,69 +1,24 @@
-# Welcome to your Lovable project
+# MemeWebsite – Top Memes of the Month
 
-## Project info
+## Overview
+MemeWebsite is an automated website that displays the top memes of the month by fetching data from Reddit's r/memes. This project demonstrates skills in API integration, backend scheduling, data storage, and responsive frontend development.
 
-**URL**: https://lovable.dev/projects/9ca99434-318b-425f-b180-353d3561da10
+## Key Features
+- **Automated Content Fetching:**  
+  Retrieves the top posts from Reddit's r/memes for the past month using the Reddit API.
+- **Backend Service:**  
+  A Node.js/Express server manages API requests, processes meme data, and serves it through RESTful endpoints.
+- **Frontend Display:**  
+  A React-based interface displays meme cards, each showing the title, image, upvotes, and a link to the original Reddit post.
+- **Data Storage:**  
+  Meme data is stored in a JSON file to maintain persistence between updates (with an option to integrate a database later).
+- **Scheduled Updates:**  
+  A cron job (using node-cron) automatically fetches and updates the meme list at regular intervals (midnight on the first day of every month).
 
-## How can I edit this code?
+## Tech Stack
+- **Backend:** Node.js, Express, axios, node-cron
+- **Frontend:** React, CSS
+- **Data Storage:** JSON file (optional: integrate MongoDB, SQLite, etc.)
+- **API:** Reddit API for fetching memes
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/9ca99434-318b-425f-b180-353d3561da10) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/9ca99434-318b-425f-b180-353d3561da10) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+## Repository Structure
