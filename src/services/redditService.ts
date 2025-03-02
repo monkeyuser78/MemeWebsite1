@@ -11,10 +11,39 @@ export interface RedditMeme {
   commentCount: number;
 }
 
-export const fetchMemes = async (limit: number = 10): Promise<RedditMeme[]> => {
+export interface SubredditOption {
+  label: string;
+  value: string;
+  description: string;
+  color: string;
+}
+
+export const popularSubreddits: SubredditOption[] = [
+  { label: "Memes", value: "memes", description: "The original and classic memes", color: "from-blue-500 to-indigo-600" },
+  { label: "Dank Memes", value: "dankmemes", description: "Top tier dank memes", color: "from-green-500 to-emerald-600" },
+  { label: "Wholesome Memes", value: "wholesomememes", description: "Memes that make you smile", color: "from-yellow-500 to-amber-600" },
+  { label: "Programmer Humor", value: "ProgrammerHumor", description: "Coding jokes and memes", color: "from-purple-500 to-violet-600" },
+  { label: "Me IRL", value: "me_irl", description: "Selfies of the soul", color: "from-red-500 to-rose-600" },
+  { label: "Advice Animals", value: "AdviceAnimals", description: "Classic meme formats", color: "from-orange-500 to-amber-600" },
+  { label: "History Memes", value: "HistoryMemes", description: "History-themed humor", color: "from-teal-500 to-cyan-600" },
+];
+
+export const timePeriods = [
+  { label: "Past Day", value: "day" },
+  { label: "Past Week", value: "week" },
+  { label: "Past Month", value: "month" },
+  { label: "Past Year", value: "year" },
+  { label: "All Time", value: "all" },
+];
+
+export const fetchMemes = async (
+  subreddit: string = "memes", 
+  limit: number = 15,
+  timePeriod: string = "month"
+): Promise<RedditMeme[]> => {
   try {
     const response = await fetch(
-      `https://www.reddit.com/r/memes/top/.json?t=month&limit=${limit}`
+      `https://www.reddit.com/r/${subreddit}/top/.json?t=${timePeriod}&limit=${limit}`
     );
 
     if (!response.ok) {
@@ -51,10 +80,10 @@ export const fetchMemes = async (limit: number = 10): Promise<RedditMeme[]> => {
         commentCount: post.data.num_comments
       }));
 
-    console.log(`Fetched ${memes.length} memes successfully`);
+    console.log(`Fetched ${memes.length} memes from r/${subreddit} successfully`);
     return memes;
   } catch (error) {
-    console.error("Error fetching memes:", error);
+    console.error(`Error fetching memes from r/${subreddit}:`, error);
     throw error;
   }
 };

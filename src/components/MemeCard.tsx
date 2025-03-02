@@ -30,12 +30,12 @@ const MemeCard = ({ meme, index }: MemeCardProps) => {
         <div className="p-5 border-b border-border/50">
           <p className="text-xs font-medium text-muted-foreground mb-2 flex items-center">
             <span className="inline-block w-5 h-5 rounded-full bg-gradient-to-br from-primary/80 to-blue-500/80 mr-2"></span>
-            Posted by u/{meme.author} • {formatRelativeTime(meme.created)}
+            r/{meme.subreddit} • Posted by u/{meme.author} • {formatRelativeTime(meme.created)}
           </p>
           <h3 className="font-medium line-clamp-2 h-12 text-lg">{meme.title}</h3>
         </div>
         
-        <div className="relative flex-grow">
+        <div className="relative flex-grow bg-secondary/30">
           {!imageLoaded && !imageError && (
             <div className="absolute inset-0 flex items-center justify-center bg-muted/30 animate-pulse">
               <div className="w-10 h-10 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />

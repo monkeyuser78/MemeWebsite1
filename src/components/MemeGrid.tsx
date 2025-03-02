@@ -10,13 +10,16 @@ interface MemeGridProps {
   memes: RedditMeme[];
   isLoading: boolean;
   error: Error | null;
+  subreddit: string;
+  timePeriod: string;
+  onRetry: () => void;
 }
 
-const MemeGrid = ({ memes, isLoading, error }: MemeGridProps) => {
+const MemeGrid = ({ memes, isLoading, error, subreddit, timePeriod, onRetry }: MemeGridProps) => {
   if (isLoading) {
     return (
       <div className="min-h-[40vh] flex flex-col items-center justify-center">
-        <Loader size="lg" message="Fetching the freshest memes..." />
+        <Loader size="lg" message={`Loading from r/${subreddit}...`} />
       </div>
     );
   }
@@ -33,12 +36,12 @@ const MemeGrid = ({ memes, isLoading, error }: MemeGridProps) => {
           <div className="mb-4 bg-destructive/10 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
             <AlertCircle className="text-destructive w-8 h-8" />
           </div>
-          <h3 className="text-xl font-semibold mb-2 text-destructive">Error Loading Memes</h3>
+          <h3 className="text-xl font-semibold mb-2 text-destructive">Error Loading Content</h3>
           <p className="text-muted-foreground mb-6">
-            {error.message || "Unable to fetch memes from Reddit. Please try again later."}
+            {error.message || `Unable to fetch content from r/${subreddit}. Please try again later.`}
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={onRetry}
             className="bg-gradient-to-r from-primary to-blue-600 text-white hover:opacity-90 px-5 py-3 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center w-full"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
@@ -61,12 +64,12 @@ const MemeGrid = ({ memes, isLoading, error }: MemeGridProps) => {
           <div className="mb-4 bg-muted p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
             <AlertCircle className="text-muted-foreground w-8 h-8" />
           </div>
-          <h3 className="text-xl font-semibold mb-2">No Memes Found</h3>
+          <h3 className="text-xl font-semibold mb-2">No Content Found</h3>
           <p className="text-muted-foreground mb-6">
-            We couldn't find any memes. This might be due to API limitations or filter settings.
+            We couldn't find any content in r/{subreddit} for the selected time period. This might be due to API limitations or filter settings.
           </p>
           <button
-            onClick={() => window.location.reload()}
+            onClick={onRetry}
             className="bg-gradient-to-r from-primary to-blue-600 text-white hover:opacity-90 px-5 py-3 rounded-xl text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center w-full"
           >
             <RefreshCw className="w-4 h-4 mr-2" />
