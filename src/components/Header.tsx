@@ -41,7 +41,7 @@ const Header = ({ subreddit, onSubredditChange, timePeriod, onTimePeriodChange, 
             <ThemeToggle />
             
             <a 
-              href="https://github.com" 
+              href="https://github.com/monkeyuser78/meme-fetcher-pro/tree/main" 
               target="_blank" 
               rel="noopener noreferrer"
               className="glass-button p-2.5 rounded-xl text-sm font-medium hover:text-primary flex items-center justify-center transition-all hover:shadow-md"
