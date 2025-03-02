@@ -39,7 +39,7 @@ const Index = () => {
       toast({
         variant: "destructive",
         title: "Error loading memes",
-        description: `Could not fetch memes from r/${selectedSubreddit}. Please try again later.`,
+        description: `Could not fetch content from r/${selectedSubreddit}. Please try again later.`,
         duration: 5000,
       });
     } finally {
@@ -69,7 +69,7 @@ const Index = () => {
   ) || popularSubreddits[0];
 
   return (
-    <div className="min-h-screen px-4 py-8 sm:py-12 max-w-7xl mx-auto">
+    <div className="min-h-screen px-4 py-8 sm:py-12 max-w-7xl mx-auto transition-colors duration-300">
       <Header 
         subreddit={selectedSubreddit}
         onSubredditChange={handleSubredditChange}
@@ -87,9 +87,9 @@ const Index = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="mb-12 text-center">
+            <div className="mb-12 text-center overflow-hidden">
               <motion.h2 
-                className={`text-4xl font-bold mb-3 bg-gradient-to-r ${currentSubreddit.color} bg-clip-text text-transparent`}
+                className={`text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r ${currentSubreddit.color} bg-clip-text text-transparent truncate`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
@@ -126,7 +126,7 @@ const Index = () => {
         </AnimatePresence>
       </main>
       
-      <footer className="mt-20 mb-8 text-center">
+      <footer className="mt-20 mb-8 text-center transition-all duration-300">
         <div className="glass-card py-5 px-6 inline-block rounded-full">
           <p className="text-sm text-muted-foreground">
             Data sourced from Reddit • Not affiliated with Reddit Inc.

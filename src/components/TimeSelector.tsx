@@ -17,7 +17,7 @@ const TimeSelector = ({ value, onChange }: TimeSelectorProps) => {
   return (
     <div className="w-full max-w-xs">
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="w-full glass-button">
+        <SelectTrigger className="w-full glass-button transition-all duration-300">
           <SelectValue placeholder="Time period" />
         </SelectTrigger>
         <SelectContent>
@@ -25,6 +25,7 @@ const TimeSelector = ({ value, onChange }: TimeSelectorProps) => {
             <SelectItem 
               key={period.value} 
               value={period.value}
+              className="transition-colors duration-200"
             >
               {period.label}
             </SelectItem>
