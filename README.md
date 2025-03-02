@@ -20,5 +20,3 @@ MemeWebsite is an automated website that displays the top memes of the month by 
 - **Frontend:** React, CSS
 - **Data Storage:** JSON file (optional: integrate MongoDB, SQLite, etc.)
 - **API:** Reddit API for fetching memes
-
-## Repository Structure
